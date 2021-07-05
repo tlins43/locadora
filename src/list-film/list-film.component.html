@@ -1,0 +1,27 @@
+<div class="list-film">
+    <div class="button-create-film">
+        <button type="button" class="btn btn-secondary">Adicionar filme</button>
+    </div>
+    
+    <ul class="list-group">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+
+
+      <div ng-controller="repeatController">
+        I have {{friends.length}} friends. They are:
+        <input type="search" ng-model="q" placeholder="filter friends..." aria-label="filter friends" />
+        <ul class="example-animate-container">
+          <li class="animate-repeat" ng-repeat="friend in friends | filter:q as results track by friend.name">
+            [{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.
+          </li>
+          <li class="animate-repeat" ng-if="results.length === 0">
+            <strong>No results found...</strong>
+          </li>
+        </ul>
+      </div>
+</div>

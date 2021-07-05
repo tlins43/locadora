@@ -13,7 +13,7 @@
     "postupdate-deps": "npm run copy-libs",
     "copy-libs": "cpx \"node_modules/{angular,angular-*,bootstrap/dist,jquery/dist}/**/*\" src/lib -C",
     "prestart": "npm install",
-    "start": "http-server ./app -a localhost -p 8000 -c-1",
+    "start": "http-server ./src -a localhost -p 8000 -c-1",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
     "test-single-run": "npm test -- --single-run",
@@ -23,16 +23,16 @@
     "protractor": "protractor e2e-tests/protractor.conf.js"
   },
   "dependencies": {
-    "angular": "^1.8.x",
-    "angular-animate": "^1.8.x",
-    "angular-resource": "^1.8.x",
-    "angular-route": "^1.8.0",
+    "angular": "1.8.x",
+    "angular-animate": "1.8.x",
+    "angular-resource": "1.8.x",
+    "angular-route": "1.8.x",
     "bootstrap": "^4.0.0",
     "http-server": "^0.12.3",
-    "jquery": "^3.3.0"
+    "jquery": "^3.3.x"
   },
   "devDependencies": {
-    "angular-mocks": "1.8.x",
+    "angular-mocks": "1.8.0",
     "cpx": "^1.5.0",
     "http-server": "^0.11.1",
     "jasmine-core": "^3.5.0",
