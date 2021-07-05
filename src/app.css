@@ -8,6 +8,13 @@
     padding: 3% 30%;
 }
 
+.li-films {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .button-create-film{
     display: flex;
     justify-content: flex-end;

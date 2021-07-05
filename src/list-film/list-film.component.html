@@ -1,27 +1,61 @@
-<div class="list-film">
+<div class="list-film" ng-controller="listFilmController">
     <div class="button-create-film">
-        <button type="button" class="btn btn-secondary">Adicionar filme</button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-type="new">Adicionar filme</button>
     </div>
+
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th style="border: 0px;">Nome do Filme</th>
+            <th style="border: 0px;">Ano</th>
+            <th style="border: 0px;">Genero</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="film in films">
+            <td>{{film.name}}</td>
+            <td>{{film.year}}</td>
+            <td>{{film.gender}}</td>
+            <td>
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-index="{{$index}}" data-film="{{film}}" data-type="update">Alterar</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger btn-sm" ng-click="delete($index)">Excluir</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
     
-    <ul class="list-group">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Morbi leo risus</li>
-        <li class="list-group-item">Porta ac consectetur ac</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-      </ul>
 
-
-      <div ng-controller="repeatController">
-        I have {{friends.length}} friends. They are:
-        <input type="search" ng-model="q" placeholder="filter friends..." aria-label="filter friends" />
-        <ul class="example-animate-container">
-          <li class="animate-repeat" ng-repeat="friend in friends | filter:q as results track by friend.name">
-            [{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.
-          </li>
-          <li class="animate-repeat" ng-if="results.length === 0">
-            <strong>No results found...</strong>
-          </li>
-        </ul>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="film-name" class="col-form-label">Nome do Filme:</label>
+              <input type="text" class="form-control" id="film-name" ng-model="newFilm.name">
+              <label for="film-year" class="col-form-label">Ano de Lançamento:</label>
+              <input type="text" class="form-control" id="film-year" ng-model="newFilm.year">
+              <label for="film-gender" class="col-form-label">Genero:</label>
+              <input type="text" class="form-control" id="film-gender" ng-model="newFilm.gender">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer"> 
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary" ng-click="createOrUpdateButton" data-dismiss="modal" ></button>
+        </div>
       </div>
+    </div>
+  </div>
+
 </div>
