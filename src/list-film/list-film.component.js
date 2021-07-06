@@ -14,15 +14,15 @@ angular.
       {name:'Toy Story', year: "2008", gender: "Desenho"}
     ];
 
-    $scope.newFilm = {}
 
-
-    $scope.createOrUpdate = function (type){
+    $scope.createOrUpdate = function (type, index){
+        console.log(index)
         if(type == 'new') {
             $scope.newFilm = {}
             $scope.films.push($scope.newFilm)
         }else {
-
+            $scope.newFilm = $scope.films[index]
+           $scope.films[index] = $scope.newFilm
         }
     }
 
@@ -36,17 +36,24 @@ angular.
         var filmData = button.data()
         var modal = $(this)
 
+       if(filmData.type == "new"){
+           index = null
+       }else {
+           index = filmData.index
+       }
 
-        $scope.createOrUpdateButton = $scope.createOrUpdate(filmData.type)
+        $scope.createOrUpdateButton = $scope.createOrUpdate(filmData.type, index)
        
 
-        if(filmData.type == 'new'){            
+        if(filmData.type == 'new'){   
+            var index = ""         
             var buttonName = 'Salvar novo filme';
             var titleFilm = 'Novo filme';
             modal.find('.modal-body input#film-name').val("")
             modal.find('.modal-body input#film-year').val("")
             modal.find('.modal-body input#film-gender').val("")
         }else {
+            var index = filmData.index
             var buttonName = 'Alterar filme';
             var titleFilm = filmData.film.name;            
             modal.find('.modal-body input#film-name').val(filmData.film.name)
